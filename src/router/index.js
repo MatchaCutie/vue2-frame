@@ -1,10 +1,25 @@
-import Home from '../views/Home.vue'
+import tag from '@/examples/docs/tag.md'
+import layout from '@/examples/components/layout'
 
 export default [
   {
     path: '/',
-    name: 'Home',
-    component: Home
+    redirect: () => {
+      return {
+        name: 'tag'
+      }
+    }
+  },
+  {
+    path: '/ui',
+    component: layout,
+    children: [
+      {
+        path: 'tag',
+        name: 'tag',
+        component: tag
+      }
+    ]
   },
   {
     path: '/about',
