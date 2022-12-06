@@ -40,3 +40,8 @@ new Vue({
 registerMicroApps(microApps)
 // 启动qiankun，样式隔离
 start({ strictStyleIsolation: true, experimentalStyleIsolation: true })
+
+router.beforeEach(async (to, from, next) => {
+  console.log(to)
+  next()
+})

@@ -26,7 +26,17 @@ export default {
 
   data () {
     return {
-      microType: 'html'
+      microType: 'sub-vue2'
+    }
+  },
+
+  created () {
+    if (this.$route.name.includes('sub-vue2')) {
+      this.microType = 'vue2'
+    } else if (this.$route.name.includes('sub-react')) {
+      this.microType = 'react'
+    } else if (this.$route.name.includes('sub-html')) {
+      this.microType = 'html'
     }
   },
 

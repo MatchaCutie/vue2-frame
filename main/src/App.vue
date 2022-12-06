@@ -2,6 +2,8 @@
   <div id="app">
     <div id="nav">
       <div class="project-title" @click="toHome">wwy学习qiankun项目</div>
+      <div class="userinfo">主应用的state：{{ JSON.stringify(state) }}</div>
+      <el-button @click="changeState">主应用修改state</el-button>
       <el-dropdown @command="handleCommand" trigger="click">
         <span>
           {{$i18n.locale}}
@@ -18,13 +20,28 @@
 </template>
 
 <script>
+import store from '@/store'
 export default {
+  computed: {
+    state () {
+      // 如果只需要取某个命名空间下的state，比如 user ，可以加上参数
+      // return store.getGlobalState('user')
+
+      // 返回所有的state则不需添加参数
+      return store.getGlobalState()
+    }
+  },
   methods: {
     handleCommand (val) {
       this.$i18n.locale = val
     },
     toHome () {
       this.$router.push({ name: 'home' })
+    },
+    changeState () {
+      store.setGlobalState({
+        user: { name: '主修' + Math.round(Math.random() * 100) }
+      })
     }
   }
 }
