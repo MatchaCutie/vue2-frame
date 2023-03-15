@@ -22,7 +22,7 @@ module.exports = {
   runtimeCompiler: false,
   // 是否忽略所有 node_modules 中的文件，官文写的默认false
   // transpileDependencies: false, // 但是打包报错提示必须是数组
-  // 生产环境的 source map,false的话build出来的包中不含.js.map文件
+  // 生产环境的 source map，false的话build出来的包中不含.js.map文件（一般为false，可以减少包体积，true的话报错可以定位到位置，可看到源码，如果不想在生产环境被看到源码设为false）
   productionSourceMap: true,
   // 设置生成的 HTML 中 <link rel="stylesheet"> 和 <script> 标签的 crossorigin 属性
   crossorigin: undefined,
